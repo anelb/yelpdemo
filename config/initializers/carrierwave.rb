@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
   config.storage    = :aws
-  config.aws_bucket = ENV['config.aws_bucket']
+  config.aws_bucket = ENV['config_bucket']
   #config.aws_acl    = 'public-read'
 
   # Optionally define an asset host for configurations that are fronted by a
