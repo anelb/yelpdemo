@@ -27,18 +27,3 @@ CarrierWave.configure do |config|
   # content through CloudFront.
   #config.aws_signer = -> (unsigned_url, options) { Aws::CF::Signer.sign_url unsigned_url, options }
 end
-
-
-# CarrierWave.configure do |config|
-#   config.fog_credentials = {
-#     :provider               => 'AWS',                        # required
-#     :aws_access_key_id      => 'AKIAIRQRPLO2UHMPHLKQ',                        # required
-#     :aws_secret_access_key  => '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'
-#   }
-#   config.fog_directory  = 'yelpdemoba'                     # required
-# end
-
-# Access Key ID:
-# AKIAIRQRPLO2UHMPHLKQ
-# Secret Access Key:
-# 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
