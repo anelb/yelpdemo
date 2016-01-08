@@ -29,6 +29,7 @@ gem 'nokogiri', '~> 1.6.0'
 gem 'fog', '~> 1.37'
 gem 'carrierwave-aws'
 gem "figaro"
+gem "mini_magick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
