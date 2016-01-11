@@ -52,11 +52,12 @@
 									 data-score=<%= review.rating %>></div>
 								<p><%= h(review.comment).
 									   gsub(/\n/, '<br/>').html_safe %></p>
-								<%= link_to 'Edit Review', 
-									edit_restaurant_review_path(@restaurant, review) %> |
-								<%= link_to 'Delete Review', 
-									restaurant_review_path(@restaurant, review), 
-									method: :delete %>
+								<% if user_signed_in? %>
+									<% if (review.user == current_user) || (current_user.admin?) %>
+									   <p><%= link_to 'Edit', edit_restaurant_review_path(@restaurant, review) %>
+									    | <%= link_to 'Delete', restaurant_review_path(@restaurant, review), 												method: :delete %></p>
+									<% end %>
+								<% end %>
 							</td>
 						</tr>
 					<% end %>
