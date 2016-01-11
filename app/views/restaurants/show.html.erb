@@ -1,6 +1,6 @@
-<%= image_tag @restaurant.image_url %>
 <div class="row">
 	<div class="col-md-2">
+		<%= image_tag @restaurant.image_url %>
 		<h2>
 		  <%= @restaurant.name %>
 		</h2>
@@ -29,9 +29,23 @@
 			<h3>No reviews yet. Be the first to write one.</h3>
 		<% else %>
 			<% @reviews.each do |review| %>
-				<p>	<%= review.rating %></p>
+				<div class="star-rating" data-score='<%= review.rating %>'></div>
 				<p> <%= review.comment %></p>
+				<%= link_to 'Edit Review', 
+					edit_restaurant_review_path(@restaurant, review) %> |
+				<%= link_to 'Delete Review', 
+					restaurant_review_path(@restaurant, review), 
+					method: :delete %>
 			<% end %>
 		<% end %>
 	</div>
 </div>
+<script>
+	$('.star-rating').raty({
+		path: 'https://s3.eu-central-1.amazonaws.com/yelpdemoba/Stars/',
+		readOnly: true,
+		score: function () {
+			return $(this).attr('data-score');
+		}
+	});
+</script>
