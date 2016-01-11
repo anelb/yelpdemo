@@ -3,40 +3,37 @@
   <h3>Explore the favorite diners, pastry shops, and eatieris in your comunity. <br>
     Leave reviews and rating for you fellow fodies</h3>
 </div>
-
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-info' %>
+<% end %>
 <table class='table table-hover'>
   <thead>
     <tr>
+      <% if user_signed_in? && current_user.admin? %>
+        <th colspan="2"></th>
+      <% end %>
       <th>Name</th>
       <th>Address</th>
       <th>Phone</th>
       <th>Website</th>
-      <% if user_signed_in? && current_user.admin? %>
-        <th colspan="2"></th>
-      <% end %>
     </tr>
   </thead>
-
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
+         <% if user_signed_in? && current_user.admin? %>
+          <td>
+              <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-primary' %></td>
+          <td>
+              <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% end %>
         <td><%= link_to restaurant.name, restaurant %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>
         <td><%= restaurant.website %></td>
-        <% if user_signed_in? && current_user.admin? %>
-          <td>
-              <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-success' %></td>
-          <td>
-              <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-<% if user_signed_in? && current_user.admin? %>
-  <%= link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-info' %>
-<% end %>
 <%= image_tag 'https://s3.eu-central-1.amazonaws.com/yelpdemoba/happy_footer.png' %>

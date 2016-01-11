@@ -20,10 +20,13 @@
 		  <strong>Website:</strong>
 		  <%= link_to @restaurant.website, @restaurant.website %>
 		</p>
-		<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-link' %> |
-		<%= link_to 'Back', restaurants_path, class: 'btn btn-link' %>
 		<p><%= link_to 'Write Review',  new_restaurant_review_path(@restaurant), 
-									 class: 'btn btn-primary' %></p>		 
+									 class: 'btn btn-primary' %></p>
+		<iframe width="250" height="300" frameborder="0" style="border:0"
+			src="https://www.google.com/maps/embed/v1/search?
+			q=<%= @restaurant.address.parameterize %>
+			&key=AIzaSyAdVJ4rc96YmNI0LN9PuFIevpxNvZ7QmVU" allowfullscreen>
+		</iframe>		 
 	</div>
 	<div class="col-md-10">
 		<% if @reviews.blank? %>
