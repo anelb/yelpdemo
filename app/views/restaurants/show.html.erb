@@ -1,12 +1,12 @@
 	<div class="row">
-	<div class="col-md-2">
+	<div class="col-md-3">
 		<%= image_tag @restaurant.image_url %>
 		<h2>
 		  <%= @restaurant.name %>
 		</h2>
 		<div class="star-rating" data-score=<%= @avg_rating %>></div>
 		<p><%= "#{@reviews.length} reviews	" %></p>
-		<p>
+		<p style='width: 200px'>
 		  <strong>Address:</strong>
 		  <%= @restaurant.address %>
 		</p>
@@ -25,10 +25,10 @@
 		<iframe width="250" height="300" frameborder="0" style="border:0"
 			src="https://www.google.com/maps/embed/v1/search?
 			q=<%= @restaurant.address.parameterize %>
-			&key=AIzaSyAdVJ4rc96YmNI0LN9PuFIevpxNvZ7QmVU" allowfullscreen>
+			&key=AIzaSyAdVJ4rc96YmNI0LN9PuFIevpxNvZ7QmVU&zoom=16" allowfullscreen>
 		</iframe>		 
 	</div>
-	<div class="col-md-10">
+	<div class="col-md-9">
 		<% if @reviews.blank? %>
 			<h3>No reviews yet. Be the first to write one.</h3>
 		<% else %>
