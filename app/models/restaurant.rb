@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
 	mount_uploader :image, ImageUploader
+	searchkick
 	has_many :reviews
 	validates :name, :address, :phone, :website, :image, presence: true
 	validates :phone, format: {
@@ -14,4 +15,5 @@ class Restaurant < ActiveRecord::Base
 		with: /\A\d[^,]+,[^,]+, [A-Z]{2} \d{5}\z/,
 		message: 'must be in the format 350 Fifth Avenue, New York, NY 12032'
 	}
+
 end

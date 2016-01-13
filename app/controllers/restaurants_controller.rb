@@ -1,10 +1,19 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   #Need to be authanticated to visit pages - new, edit, update, destroy, except index and show page
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :check_user, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :check_user, except: [:search, :index, :show]
   # GET /restaurants
   # GET /restaurants.json
+
+  def search
+    if params[:search].present?
+      @restaurants = Restaurant.search(params[:search])
+    else
+      @restaurants = Restaurant.all
+    end
+  end
+
   def index
     @restaurants = Restaurant.all
   end
